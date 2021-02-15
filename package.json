@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "name": "xeho91-logo",
+  "version": "1.0.0",
+  "description": "xeho91's logo",
+  "main": "xeho91-logo.min.svg",
+  "files": [
+    "xeho91-logo.svg",
+    "xeho91-logo.min.svg",
+    "xeho91-logo.png",
+    "xeho91-logo.animated.svg",
+    "xeho91-logo.animated.min.svg"
+  ],
+  "scripts": {
+    "minify": "svgo --config \"config/svgo.json\" --input \"xeho91-logo.svg\" --output \"xeho91-logo.min.svg\"",
+    "minify:animated": "svgo --config \"config/svgo.json\" --input \"xeho91-logo.animated.svg\" --output \"xeho91-logo.animated.min.svg\"",
+    "export:png": "svgexport \"xeho91-logo.svg\" \"xeho91-logo.png\" 1024:1024"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeho91/logo.git"
+  },
+  "keywords": [
+    "logo",
+    "brand",
+    "assets",
+    "SVG",
+    "animated",
+    "SMIL"
+  ],
+  "author": "Mateusz Kadlubowski <xeho91@pm.me>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/xeho91/logo/issues"
+  },
+  "homepage": "https://github.com/xeho91/logo#readme",
+  "devDependencies": {
+    "svgexport": "^0.4.1",
+    "svgo": "^1.3.2"
+  }
+}
