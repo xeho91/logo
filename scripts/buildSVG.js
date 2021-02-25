@@ -13,6 +13,7 @@ const colorPrimary = colorsJSON.terracotta.HSLA;
 const colorBackground = colorsJSON.clairvoyant.HSLA;
 const shadowColor = colorsJSON.shadow.color;
 const shadowOpacity = colorsJSON.shadow.opacity;
+const animationDuration = "0.2s";
 
 function buildSVG(filePath) {
 	const buildPath = path.join(".", "build");
@@ -46,6 +47,11 @@ function buildSVG(filePath) {
 					attr: "flood-opacity",
 					value: shadowOpacity,
 					selector: "#shadow_color",
+				},
+				{
+					attr: "dur",
+					value: animationDuration,
+					selector: ".character-animation",
 				},
 			])
 		)

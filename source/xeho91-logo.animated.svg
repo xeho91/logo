@@ -4833,18 +4833,23 @@
 					x2="0%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_x_left"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
+							dur=""
+							begin="0; logo_background.click"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -4856,19 +4861,23 @@
 					x2="0%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_x_right"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
+							dur=""
 							fill="freeze"
-							begin="0.25s"
+							begin="animation_x_left.end"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -4882,19 +4891,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_e_left"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="0.5s"
+							dur=""
+							begin="animation_x_right.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -4906,19 +4919,23 @@
 					x2="100%"
 					y2="50%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_e_bottom"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="0.75s"
+							dur=""
+							begin="animation_e_left.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -4930,19 +4947,23 @@
 					x2="100%"
 					y2="50%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_e_middle"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="1s"
+							dur=""
+							begin="animation_e_bottom.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -4954,19 +4975,23 @@
 					x2="100%"
 					y2="50%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_e_top"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="1.25s"
+							dur=""
+							begin="animation_e_middle.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -4980,19 +5005,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_h_left"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="1.5s"
+							dur=""
+							begin="animation_e_top.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5004,19 +5033,23 @@
 					x2="0%"
 					y2="50%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_h_middle"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="1.75s"
+							dur=""
+							begin="animation_h_left.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5028,19 +5061,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_h_right"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="2s"
+							dur=""
+							begin="animation_h_middle.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5054,19 +5091,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_o_left"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="2.25s"
+							dur=""
+							begin="animation_h_right.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5078,19 +5119,23 @@
 					x2="50%"
 					y2="100%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_o_right"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="2.5s"
+							dur=""
+							begin="animation_o_left.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5104,19 +5149,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_nine_left"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="2.75s"
+							dur=""
+							begin="animation_o_right.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5128,19 +5177,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color=""
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_nine_right"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="3s"
+							dur=""
+							begin="animation_nine_left.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color=""
 						stop-opacity="1"
 					/>
@@ -5154,19 +5207,23 @@
 					x2="0%"
 					y2="100%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color="var(--color-accent)"
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_one_left"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="3.25s"
+							dur=""
+							begin="animation_nine_right.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color="var(--color-accent)"
 						stop-opacity="1"
 					/>
@@ -5178,19 +5235,23 @@
 					x2="50%"
 					y2="0%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color="var(--color-accent)"
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_one_middle"
+							class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="3.5s"
+							dur=""
+							begin="animation_one_left.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color="var(--color-accent)"
 						stop-opacity="1"
 					/>
@@ -5202,19 +5263,23 @@
 					x2="0%"
 					y2="50%"
 				>
-					<stop class="gradient-color" offset="100"
+					<stop class="gradient-color"
+						offset="100"
 						stop-color="var(--color-accent)"
 						stop-opacity="0"
 					>
-						<animate attributeName="offset"
+						<animate id="animation_one_bottom"
+						class="character-animation"
+							attributeName="offset"
 							values="1; 0"
-							dur="0.2s"
-							begin="3.75s"
+							dur=""
+							begin="animation_one_middle.end"
 							fill="freeze"
 						/>
 					</stop>
 
-					<stop class="gradient-color" offset="0"
+					<stop class="gradient-color"
+						offset="0"
 						stop-color="var(--color-accent)"
 						stop-opacity="1"
 					/>
