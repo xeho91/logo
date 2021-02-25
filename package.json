@@ -3,18 +3,13 @@
   "name": "xeho91-logo",
   "version": "1.0.0",
   "description": "xeho91's logo",
-  "main": "xeho91-logo.min.svg",
   "files": [
-    "xeho91-logo.svg",
-    "xeho91-logo.min.svg",
-    "xeho91-logo.png",
-    "xeho91-logo.animated.svg",
-    "xeho91-logo.animated.min.svg"
+    "./build"
   ],
   "scripts": {
-    "minify": "svgo --config \"config/svgo.json\" --input \"xeho91-logo.svg\" --output \"xeho91-logo.min.svg\"",
-    "minify:animated": "svgo --config \"config/svgo.json\" --input \"xeho91-logo.animated.svg\" --output \"xeho91-logo.animated.min.svg\"",
-    "export:png": "svgexport \"xeho91-logo.svg\" \"xeho91-logo.png\" 1024:1024"
+    "start": "chokidar \"source/*.svg\" --command \"node scripts/buildSVG.js {path}\"",
+    "build": "node scripts/buildSVG.js",
+    "export:png": "svgexport \"./build/xeho91-logo.min.svg\" \"./build/xeho91-logo.png\" 1920:1350"
   },
   "repository": {
     "type": "git",
@@ -28,14 +23,19 @@
     "animated",
     "SMIL"
   ],
-  "author": "Mateusz Kadlubowski <xeho91@pm.me>",
+  "author": "Mateusz Kadlubowski <xeho91@pm.me> https://xeho91.site/",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/xeho91/logo/issues"
   },
   "homepage": "https://github.com/xeho91/logo#readme",
   "devDependencies": {
+    "chokidar": "^3.5.1",
+    "chokidar-cli": "^2.1.0",
+    "posthtml": "^0.15.1",
+    "posthtml-transform": "^1.0.10",
     "svgexport": "^0.4.1",
-    "svgo": "^1.3.2"
+    "svgo": "^1.3.2",
+    "yargs": "^16.2.0"
   }
 }
