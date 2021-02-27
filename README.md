@@ -15,11 +15,11 @@ A quick preview on the results can be seen below.
 
 ### Standard
 
-![xeho91's logo](./build/xeho91-logo.min.svg)
+![xeho91's logo](./build/xeho91-logo.svg)
 
 ### Animated
 
-![xeho91's animated logo](./build/xeho91-logo.animated.min.svg)
+![xeho91's animated logo](./build/xeho91-logo.animated.svg)
 
 ## LICENSE
   
