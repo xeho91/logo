@@ -1,8 +1,0 @@
-{
-  "plugins": [
-    { "removeUnknownsAndDefaults": false },
-    { "cleanupIDs": false },
-    { "cleanupNumericValues": { "leadingZero": false } },
-    { "convertShapeToPath": false }
-  ]
-}
