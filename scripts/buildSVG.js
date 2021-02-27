@@ -2,12 +2,9 @@ var path = require("path");
 var fs = require("fs");
 var postHTML = require("posthtml");
 var postHTML_transform = require("posthtml-transform");
-var svgo = require("svgo");
 var yargs = require("yargs");
 
-var SVGO = new svgo(require("../config/svgo.json"));
-
-var colorsJSON = require("../source/colors/colors.json");
+var colorsJSON = require("@xeho91/colors/colors.json");
 
 const colorPrimary = colorsJSON.terracotta.HSLA;
 const colorBackground = colorsJSON.clairvoyant.HSLA;
@@ -18,7 +15,7 @@ const animationDuration = "0.2s";
 function buildSVG(filePath) {
 	const buildPath = path.join(".", "build");
 
-	console.info(`Building a new SVG output from "${filePath}" ...`);
+	console.info(`Building a new SVG output from "${filePath}"...`);
 
 	return postHTML()
 		.use(
@@ -57,22 +54,21 @@ function buildSVG(filePath) {
 		)
 		.process(fs.readFileSync(path.resolve(".", filePath)))
 		.then(async function writeOutput({ html: newSVG }) {
-			console.log("Optimizing the new build with SVGO...");
-			const optimizedSVG = (await SVGO.optimize(newSVG)).data;
+			const outputPath = `${buildPath}/${path.basename(filePath)}`;
 
-			console.log(`Saving it into the "./${buildPath}/" directory.`);
-			return fs.writeFileSync(
-				`${buildPath}/${path.basename(filePath, ".svg")}.min.svg`,
-				optimizedSVG
-			);
+			console.log(`Saving it into path: "${outputPath}".`);
+			return fs.writeFileSync(outputPath, newSVG);
 		});
 }
 
 module.exports = buildSVG;
 
 // Allow using from CLI quickly
-const pathFromCLI = yargs.argv._[0];
+const pathsFromCLI = yargs.argv._;
 
-if (pathFromCLI) {
-	buildSVG(pathFromCLI);
+
+if (pathsFromCLI) {
+	for (const filePath of pathsFromCLI) {
+		buildSVG(filePath);
+	}
 }

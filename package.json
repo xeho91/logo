@@ -6,11 +6,6 @@
   "files": [
     "./build"
   ],
-  "scripts": {
-    "start": "chokidar \"source/*.svg\" --command \"node scripts/buildSVG.js {path}\"",
-    "build": "node scripts/buildSVG.js",
-    "export:png": "svgexport \"./build/xeho91-logo.min.svg\" \"./build/xeho91-logo.png\" 1920:1350"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xeho91/logo.git"
@@ -29,6 +24,12 @@
     "url": "https://github.com/xeho91/logo/issues"
   },
   "homepage": "https://github.com/xeho91/logo#readme",
+  "scripts": {
+    "start": "chokidar \"source/*.svg\" --command \"node scripts/buildSVG.js {path}\"",
+    "build": "node scripts/buildSVG.js \"./source/xeho91-logo.svg\" \"./source/xeho91-logo.animated.svg\"",
+    "export:png": "svgexport \"./build/xeho91-logo.min.svg\" \"./build/xeho91-logo.png\" 1920:1350",
+    "minify": "svgo --config \"config/.svgorc.js\" --folder \"./build\" --output \"./build/minified\""
+  },
   "devDependencies": {
     "chokidar": "^3.5.1",
     "chokidar-cli": "^2.1.0",
