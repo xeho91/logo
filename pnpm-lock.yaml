@@ -1,3 +1,5 @@
+dependencies:
+  '@xeho91/colors': github.com/xeho91/colors/c663356f4f48a9f4f2a2c913adde87fd010216ec
 devDependencies:
   chokidar: 3.5.1
   chokidar-cli: 2.1.0
@@ -1080,7 +1082,14 @@ packages:
     dev: true
     resolution:
       integrity: sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=
+  github.com/xeho91/colors/c663356f4f48a9f4f2a2c913adde87fd010216ec:
+    dev: false
+    name: '@xeho91/colors'
+    resolution:
+      tarball: https://codeload.github.com/xeho91/colors/tar.gz/c663356f4f48a9f4f2a2c913adde87fd010216ec
+    version: 1.0.0
 specifiers:
+  '@xeho91/colors': github:xeho91/colors#main
   chokidar: ^3.5.1
   chokidar-cli: ^2.1.0
   posthtml: ^0.15.1

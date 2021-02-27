@@ -37,5 +37,8 @@
     "svgexport": "^0.4.1",
     "svgo": "2.1.0",
     "yargs": "^16.2.0"
+  },
+  "dependencies": {
+    "@xeho91/colors": "github:xeho91/colors#main"
   }
 }
