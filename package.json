@@ -1,8 +1,7 @@
 {
-  "private": true,
-  "name": "xeho91-logo",
+  "name": "@xeho91/logo",
   "version": "1.0.0",
-  "description": "xeho91's logo",
+  "description": "xeho91's logo assets",
   "files": [
     "./build"
   ],
@@ -24,11 +23,17 @@
     "url": "https://github.com/xeho91/logo/issues"
   },
   "homepage": "https://github.com/xeho91/logo#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "start": "chokidar \"source/*.svg\" --command \"node scripts/buildSVG.js {path}\"",
     "build": "node scripts/buildSVG.js \"./source/xeho91-logo.svg\" \"./source/xeho91-logo.animated.svg\"",
     "export:png": "svgexport \"./build/xeho91-logo.min.svg\" \"./build/xeho91-logo.png\" 1920:1350",
     "minify": "svgo --config \"config/.svgorc.js\" --folder \"./build\" --output \"./build/minified\""
+  },
+  "dependencies": {
+    "@xeho91/colors": "github:xeho91/colors#main"
   },
   "devDependencies": {
     "chokidar": "^3.5.1",
@@ -38,8 +43,5 @@
     "svgexport": "^0.4.1",
     "svgo": "2.1.0",
     "yargs": "^16.2.0"
-  },
-  "dependencies": {
-    "@xeho91/colors": "github:xeho91/colors#main"
   }
 }
