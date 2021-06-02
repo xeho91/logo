@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "importHelpers": true,
+    "baseUrl": ".",
+    "rootDir": "./source",
+    "outDir": "./lib"
+  },
+  "include": [
+    "source/**/*"
+  ]
+}

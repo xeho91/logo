@@ -1,47 +1,89 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "name": "@xeho91/logo",
-  "version": "1.0.0",
-  "description": "xeho91's logo assets",
-  "files": [
-    "./build"
+  "version": "2.0.0",
+  "description": "xeho91's logo assets with CLI for automated tasks",
+  "keywords": [
+    "logo",
+    "brand assets",
+    "SVG",
+    "SMIL",
+    "animated",
+    "PNG",
+    "Svelte",
+    "CLI"
   ],
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "Mateusz Kadlubowski",
+    "email": "xeho91@pm.me",
+    "url": "https://xeho91.com/"
+  },
+  "homepage": "https://github.com/xeho91/xeho91",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xeho91/logo.git"
   },
-  "keywords": [
-    "logo",
-    "brand",
-    "assets",
-    "SVG",
-    "animated",
-    "SMIL"
-  ],
-  "author": "Mateusz Kadlubowski <xeho91@pm.me> https://xeho91.site/",
-  "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/xeho91/logo/issues"
+    "url": "https://github.com/xeho91/xeho91/issues"
   },
-  "homepage": "https://github.com/xeho91/logo#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "/dist",
+    "/bin"
+  ],
+  "bin": {
+    "xeho91-logo": "./bin/run"
+  },
   "scripts": {
-    "start": "chokidar \"source/*.svg\" --command \"node scripts/buildSVG.js {path}\"",
-    "build": "node scripts/buildSVG.js \"./source/xeho91-logo.svg\" \"./source/xeho91-logo.animated.svg\"",
-    "export:png": "svgexport \"./build/xeho91-logo.min.svg\" \"./build/xeho91-logo.png\" 1920:1350",
-    "minify": "svgo --config \"config/.svgorc.js\" --folder \"./build\" --output \"./build/minified\""
+    "build": "",
+    "start": ""
   },
   "dependencies": {
-    "@xeho91/colors": "github:xeho91/colors#main"
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/errors": "^1.3.4",
+    "@oclif/plugin-help": "^3.2.2",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
+    "@xeho91/colors": "latest",
+    "listr": "^0.14.3",
+    "prompts": "^2.4.1",
+    "svelte": "^3.38.2",
+    "svgexport": "^0.4.2",
+    "svgo": "2.3.0"
   },
   "devDependencies": {
-    "chokidar": "^3.5.1",
-    "chokidar-cli": "^2.1.0",
-    "posthtml": "^0.15.1",
-    "posthtml-transform": "^1.0.10",
-    "svgexport": "^0.4.1",
-    "svgo": "2.1.0",
-    "yargs": "^16.2.0"
+    "@oclif/dev-cli": "^1.26.0",
+    "@tsconfig/node16": "^1.0.1",
+    "@types/listr": "^0.14.3",
+    "@types/node": "^15.6.1",
+    "@types/prompts": "^2.0.12",
+    "@types/svgo": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "fs-extra": "^10.0.0",
+    "ts-node": "^10.0.0",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2"
+  },
+  "oclif": {
+    "commands": "./lib/cli/commands",
+    "bin": "xeho91-logo",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-warn-if-update-available"
+    ]
   }
 }
