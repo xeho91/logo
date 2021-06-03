@@ -22,5 +22,8 @@ A quick preview on the results can be seen below.
 ![xeho91's animated logo](./build/xeho91-logo.animated.svg)
 
 ## LICENSE
-  
-For more information, please see the [LICENSE](./LICENSE) file.
+
+The **code** is licensed under [MIT](./LICENSE).
+
+The **logo** is licensed under [CC BY-SA 4.0](./CC_BY-SA_4.0).\
+[Link to more information](https://creativecommons.org/licenses/by-sa/4.0/) about **CC BY-SA 4.0**.
