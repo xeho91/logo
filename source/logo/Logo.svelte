@@ -132,11 +132,18 @@
 
 <svg
 	{id}
+	role="img"
+	aria-labelledby="{id}_title {id}_description"
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 {width} {height}"
 	preserveAspectRatio="xMinYMin meet"
 >
+	<title id="{id}_title">xeho91's logo</title>
+	<desc id="{id}_description">It contains logotype painted in the style of
+	quickly using a paintbrush on the wall. It's written "xeho91" here in
+	capital letters.</desc>
 	<defs>
+
 		{#if withBackground}
 			<rect id="{id}_background" width={width} height={height} />
 		{/if}
