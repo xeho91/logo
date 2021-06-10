@@ -28,48 +28,64 @@ with:
 - [prompts](https://github.com/terkelg/prompts)
 - [Listr](https://github.com/SamVerschueren/listr)
 
+**NOTE:** For `export`ting, it uses [svgexport] temporarily, until `feDropShadow`
+is supported by [librsvg].\
+Once the support has arrived, I will migrate to [sharp].\
+[svgexport] uses puppeteer to opens every SVG file in the browser, in order to
+save it as PNG, hence why it could be slow.\
+
+[svgexport]: https://github.com/shakiba/svgexport
+[librsvg]: https://gitlab.gnome.org/GNOME/librsvg/-/issueos/743
+[sharp]: https://github.com/lovell/sharp
+
 ## Logo previews
 
 A few examples on of how this logo can be generated.
 
-### Standard
+The whole list of available variants is available in:
 
-![xeho91's logo](./dist/xeho91-logo.svg)
+- SVG files in [./dist/svg](./dist/svg)
+- PNG files in [./dist/png](./dist/png)
+
+### Default
+
+![xeho91's logo - default version](./dist/svg/xeho91-logo.svg)
 
 ### Animated
 
 Is possible to adjust the **animation time**, and the character's strokes
-filling **directions**. The details are in
-[./source/logo/paths.json](./source/logo/paths.json).
+filling **directions**.\
+The paths details are in [./source/logo/paths.js](./source/logo/paths.js).
 
-![xeho91's animated logo](./dist/xeho91-logo.animated.svg)
+![xeho91's animated logo](./dist/svg/xeho91-logo.animated.svg)
 
 ### Black
 
-![xeho91's logo without colors and black](./dist/xeho91-logo.black.svg)
+![xeho91's logo - black version](./dist/svg/xeho91-logo.black.svg)
 
 ### White
 
-![xeho91's logo without colors and white](./dist/xeho91-logo.white.svg)
+![xeho91's logo - white version](./dist/svg/xeho91-logo.white.svg)
 
 ### CLI usage
 
 1. Install the package globally with any Node.JS package manager of your
    choice. I use [pnpm](https://github.com/pnpm/pnpm).
 
-```sh
-pnpm i -g @xeho91/logo
-```
+   ```sh
+   pnpm i -g @xeho91/logo
+   ```
 
 2. Call the command to print the help with available commands/flags:
 
-```sh
-xeho91-logo --help
-```
+   ```sh
+   xeho91-logo --help
+   ```
 
 ## LICENSE
 
 The **code** is licensed under [MIT](./LICENSE).
 
 The **logo** is licensed under [CC BY-SA 4.0](./CC_BY-SA_4.0).\
-[Link to more information](https://creativecommons.org/licenses/by-sa/4.0/) about **CC BY-SA 4.0**.
+[Link to more information](https://creativecommons.org/licenses/by-sa/4.0/)
+about **CC BY-SA 4.0**.
