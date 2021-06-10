@@ -1,19 +1,39 @@
 <script>
-	import { readFileSync } from "fs";
+	import { readJSONSync } from "fs-extra";
 
-	import Path from "./Path.svelte";
 	import * as chars from "./paths.js";
+	import Char from "./Char.svelte";
+	import CharAnimation from "./CharAnimation.svelte";
 
 	export let id = "xeho91-logo";
-	export let withColors = false;
-	export let reverseColors = false;
-	export let withBackground = false;
-	export let backgroundType = "gradient";
-	export let reverseGradient = false;
-	export let gradientDirection = "vertical";
-	export let withAnimation = false;
 
-	const withGradient = backgroundType === "gradient";
+	export let withColors;
+
+	export let altForeground;
+
+	export let withBackground;
+	export let backgroundType;
+
+	export let gradientDirection = "vertical";
+
+	export let withAnimation = false;
+	export let animationDuration = 3000;
+
+	function getCharactersCount() {
+		let count = 0;
+
+		Object.keys(chars).forEach((charName) => {
+			count += Object.values(chars[charName]).length;
+		});
+
+		return count;
+	}
+
+	const duration = animationDuration / getCharactersCount();
+
+	const colors = readJSONSync("node_modules/@xeho91/colors/dist/colors.json");
+	const black = "hsla(0deg, 0% , 0%, 1)";
+	const white = "hsla(0deg, 0% , 100%, 1)";
 
 	function getHSLA(colorData) {
 		const { alpha } = colorData;
@@ -23,40 +43,38 @@
 		return hsla;
 	}
 
-	let colorBackground;
 	let colorForeground;
+	let colorBackground;
+	let colorShadow;
 
-	const colors = JSON.parse(
-		readFileSync("node_modules/@xeho91/colors/dist/colors.json")
-	);
+	// Set the foreground (logotype) color and shadow
+	if (withColors) {
+		if (altForeground) {
+			colorForeground = getHSLA(colors.brand.clairvoyant);
+		} else {
+			colorForeground = getHSLA(colors.brand.terracotta);
+		}
 
+		colorShadow = getHSLA(colors.supplementary.kilamanjaro);
+	} else {
+		if (altForeground) {
+			colorForeground = white;
+		} else {
+			colorForeground = black;
+		}
+
+		colorShadow = black;
+	}
 
 	function getGradient() {
 		const gradientColors = [
-			colors.brand[0],
-			...colors.gradient,
-			colors.brand[1],
+			colors.brand.clairvoyant,
+			...Object.values(colors.gradient),
+			colors.brand.terracotta,
 		];
 
-		return reverseGradient ? gradientColors.reverse() : gradientColors;
+		return altForeground ? gradientColors.reverse() : gradientColors;
 	};
-
-	const gradient = getGradient();
-
-	if (withColors) {
-		colorBackground = colors.brand[0];
-		colorForeground = colors.brand[1];
-	} else {
-		colorBackground = "white";
-		colorForeground = "black";
-	}
-
-	if (reverseColors) {
-		const bg = colorBackground;
-
-		colorBackground = colorForeground;
-		colorForeground = bg;
-	}
 
 	const getGradientTransform = () => {
 		switch(gradientDirection) {
@@ -65,32 +83,58 @@
 			case "diagonal":
 				return 45;
 			case "vertical":
-				return 90;
 			default:
 				return 90;
 		}
 	};
 
+	const withGradient = withColors && backgroundType === "gradient";
+	const gradient = getGradient();
 	const gradientTransform = getGradientTransform();
+
+	// Set the background
+	if (withColors) {
+		if (withGradient) {
+			colorBackground = `url(#${id}_gradient)`;
+		} else {
+			if (altForeground) {
+				colorBackground = getHSLA(colors.brand.terracotta);
+			} else {
+				colorBackground = getHSLA(colors.brand.clairvoyant);
+			}
+		}
+	} else {
+		if (altForeground) {
+			colorBackground = black;
+		} else {
+			colorBackground = white;
+		}
+	}
 
 	const width = 1200;
 	const height = 630;
 
 	const shadow = {
-		color: withColors ? colors.supplementary[0] : colorForeground,
+		color: colorShadow,
 		opacity: 0.75,
-		offset: {
-			x: 0,
-			y: 5,
-		},
+		offset: { x: 0, y: 5 },
 		blur: 10,
 	};
+
+	function getLastPathNameOfPrevChar(index) {
+		const charName = Object.keys(chars)[index - 1];
+		const pathNames = Object.keys(chars[charName]);
+		const lastPathName = pathNames[pathNames.length - 1];
+
+		return { charName, lastPathName };
+	}
 </script>
 
 <svg
 	{id}
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 {width} {height}"
+	preserveAspectRatio="xMinYMin meet"
 >
 	<defs>
 		{#if withBackground}
@@ -101,7 +145,6 @@
 			<linearGradient
 				id="{id}_gradient"
 				gradientTransform="rotate({gradientTransform})"
-
 			>
 				{#each gradient as color, index}
 					<stop
@@ -112,45 +155,52 @@
 			</linearGradient>
 		{/if}
 
-		<filter id="{id}_shadow">
+		<filter id="{id}_shadow" filterUnits="userSpaceOnUse">
 			<feDropShadow
 				dx={shadow.offset.x}
 				dy={shadow.offset.y}
 				stdDeviation={shadow.blur}
-				flood-color={withColors ? getHSLA(shadow.color) : colorForeground}
+				flood-color={shadow.color}
 				flood-opacity={shadow.opacity}
 			/>
 		</filter>
 
+		{#if withAnimation}
+			<g id="{id}_animations">
+				{#each Object.keys(chars) as charName, index}
+					<CharAnimation
+						id={charName}
+						charData={chars[charName]}
+						color={colorForeground}
+						{duration}
+						prevChar={
+							index === 0
+								? undefined
+								: getLastPathNameOfPrevChar(index)
+						}
+					/>
+				{/each}
+			</g>
+		{/if}
+
 		<symbol id="{id}_logomark">
 			{#each Object.keys(chars) as charName}
-				<g id={charName}>
-					{#each Object.keys(chars[charName]) as pathName}
-						<Path
-							id="{charName}-{pathName}"
-							{withAnimation}
-							d={chars[charName][pathName]}
-						/>
-					{/each}
-				</g>
+				<Char
+					id={charName}
+					charData={chars[charName]}
+					{withAnimation}
+				/>
 			{/each}
 		</symbol>
 	</defs>
 
 	{#if withBackground}
-		<use
-			href="#{id}_background"
-			fill={
-				withColors
-					? withGradient ? `url(#${id}_gradient)` : getHSLA(colorBackground)
-					: colorBackground
-			}
-		/>
+		<use href="#{id}_background" fill={colorBackground} />
 	{/if}
 
 	<use
 		href="#{id}_logomark"
-		fill={withColors ? getHSLA(colorForeground) : colorForeground}
+		fill={colorForeground}
 		filter="url(#{id}_shadow)"
 	/>
 </svg>
