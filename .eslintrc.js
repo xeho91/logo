@@ -28,18 +28,6 @@ var rulesFromESLint = {
 	"no-alert": ["error"],
 
 	"no-debugger": ["error"],
-
-	"prefer-named-capture-group": ["error"],
-
-	"func-names": ["error", "as-needed"],
-
-	"semi": ["off"],
-
-	"object-curly-spacing": ["warn", "always"],
-
-	"no-else-return": ["off"],
-
-	"operator-linebreak": ["off"]
 };
 
 var rulesFromPlugins = {
@@ -60,12 +48,6 @@ module.exports = {
 
 		// https://github.com/xjamundx/eslint-plugin-promise
 		"plugin:promise/recommended",
-
-		// https://github.com/oclif/eslint-config-oclif
-		"oclif",
-
-		// https://github.com/oclif/eslint-config-oclif-typescript
-		"oclif-typescript",
 	],
 
 	parser: "@typescript-eslint/parser",
