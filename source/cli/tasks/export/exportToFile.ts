@@ -21,10 +21,25 @@ async function exportToPNG(input: string, output: string) {
 export const exportToFile: ListrTask = {
 	title: "Exporting the selected SVG logo file(s) to PNG format... ",
 	task: async (context: ContextExport, task) => {
-		const outputDir = join(cwd(), "./dist/png");
+		const { flags } = context;
 
-		if (!existsSync(outputDir)) {
-			mkdirSync(outputDir);
+		let outputDirPath;
+
+		if (!flags.output) {
+			outputDirPath = await task.prompt([{
+				type: "input",
+				message: "Where do you want to save the output?",
+				name: "outputDirPath",
+				initial: "./dist/png",
+			}]);
+
+			outputDirPath = join(cwd(), outputDirPath);
+		} else {
+			outputDirPath = join(cwd(), flags.output);
+		}
+
+		if (!existsSync(outputDirPath)) {
+			mkdirSync(outputDirPath);
 		}
 
 		const total = context.files.length;
@@ -35,7 +50,7 @@ export const exportToFile: ListrTask = {
 
 			const baseFileName = basename(logoFile, ".svg");
 			const svgFilePath = join(cwd(), "dist/svg", logoFile);
-			const pngOutputPath = join(outputDir, `${baseFileName}.png`);
+			const pngOutputPath = join(outputDirPath, `${baseFileName}.png`);
 
 			await exportToPNG(svgFilePath, pngOutputPath);
 			task.output = `[${progress}/${total}] Saved as PNG: ${info(`file://${pngOutputPath}`)}`;
@@ -43,7 +58,7 @@ export const exportToFile: ListrTask = {
 
 		task.title += `${success("done")}.`;
 		task.output = `Saved all logo file(s) as PNG to directory: ${
-			info(`file://${outputDir}`)
+			info(`file://${outputDirPath}`)
 		}.`;
 	},
 	options: {
